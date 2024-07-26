@@ -41,12 +41,22 @@ chrome_options.add_argument(f"user-agent={mobile_user_agent}")
 
 driver = webdriver.Chrome(options=chrome_options)
 
-url = "https://djdog.io/dog#tgWebAppData=user%3D%257B%2522id%2522%253A6649740242%252C%2522first_name%2522%253A%2522saroed10%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522saroed10%2522%252C%2522language_code%2522%253A%2522id%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D-5808842632094863291%26chat_type%3Dsender%26auth_date%3D1721925505%26hash%3D4df5b20ecca82a19af7b660ade46e3fafbe98f59918414547c32fde9d515d082&tgWebAppVersion=7.6&tgWebAppPlatform=web&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23ffffff%22%2C%22button_color%22%3A%22%233390ec%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%23707579%22%2C%22link_color%22%3A%22%2300488f%22%2C%22secondary_bg_color%22%3A%22%23f4f4f5%22%2C%22text_color%22%3A%22%23000000%22%2C%22header_bg_color%22%3A%22%23ffffff%22%2C%22accent_text_color%22%3A%22%233390ec%22%2C%22section_bg_color%22%3A%22%23ffffff%22%2C%22section_header_text_color%22%3A%22%233390ec%22%2C%22subtitle_text_color%22%3A%22%23707579%22%2C%22destructive_text_color%22%3A%22%23df3f40%22%7D"
+url = ""
 tapsemua = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[1]/img[1]'
 prize = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[3]/img'
 buybox = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[2]/div[3]/div/span'
 tap = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[1]/img[2]'
 home = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/img'
+       
+def hitung_mundur(detik):
+    while detik:
+        mins, secs = divmod(detik, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        detik -= 1
+    
+    print("Waktu telah habis!")        
 
 driver.get(url)
 while True:
@@ -70,5 +80,7 @@ while True:
         buy.click()
         print("berhasil buy box")
         time.sleep(5)
+        detik = 1500
+        hitung_mundur(detik)
     except:
         pass
