@@ -47,6 +47,7 @@ prize = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[3]/img'
 buybox = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[2]/div[3]/div/span'
 tap = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[1]/img[2]'
 home = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/img'
+upmax = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[1]/div[4]'
        
 def hitung_mundur(detik):
     while detik:
@@ -76,6 +77,10 @@ while True:
         hadiah.click()
         print("menu prize")
         time.sleep(5)
+        maxpet = driver.find_element(By.XPATH,upmax)
+        maxpet.click()
+        time.sleep(5)
+        print("berhasil up lv pet")
         buy = driver.find_element(By.XPATH,buybox)
         buy.click()
         print("berhasil buy box")
